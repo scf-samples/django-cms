@@ -1,8 +1,12 @@
 django-cms
 ==========
 
-To deploy on HPE Helion Stackato, execute the following command:
+To deploy this application:
 
-     stackato push -n
-
-The default username and password is `demo`
+```
+cf create-service postgres default django-cms-db
+cf push --no-start django-cms
+cf set-env django-cms DISABLE_COLLECTSTATIC 1
+cf set-env django-cms DJANGO_SETTINGS_MODULE settings
+cf restart django-cms
+```
