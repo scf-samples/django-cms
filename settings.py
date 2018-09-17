@@ -31,7 +31,7 @@ if 'DATABASE_URL' in os.environ:
     }
     if url.scheme == 'postgres':
         DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-    elif url.scheme == 'mysql':
+    elif url.scheme.startswith('mysql'):
         DATABASES['default']['ENGINE'] = 'django.db.backends.mysql'
 else:
     DATABASES['default'] = {
